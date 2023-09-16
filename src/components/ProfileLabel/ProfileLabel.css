@@ -1,0 +1,19 @@
+.profile-label {
+    display: flex;
+    border-radius: 50px;
+}
+
+.profile-label__name {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.profile-label__img {
+    background: url("../../images/avatar.svg") no-repeat center center;
+    background-size: cover;
+    border-radius: 50px;
+}
