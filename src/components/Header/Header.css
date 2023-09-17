@@ -83,7 +83,7 @@
 
 @media screen and (max-width: 768px){
     .header__content {
-        width: calc(100% - 38px*2);
+        width: calc(100% - 30px*2);
     }
 
     .header__links {
@@ -93,5 +93,11 @@
     .header__burger-menu {
         display: block;
         margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .header__content {
+        width: calc(100% - 14px*2);
     }
 }

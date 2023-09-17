@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Navigation = ({onCloseMenu}) => {
     return (
-        <div className="navigation">
+        <aside className="navigation">
             <div className="navigation__content">
                 <button className="navigation__btn-close btn-reset" onClick={onCloseMenu}></button>
                 <nav className="navigation__menu">
@@ -41,7 +41,7 @@ const Navigation = ({onCloseMenu}) => {
                     </ul>
                 </nav>
             </div>
-        </div>
+        </aside>
     )
 }
 
