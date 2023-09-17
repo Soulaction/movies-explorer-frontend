@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import Promo from "../Promo/Promo";
+import NavTab from "../NavTab/NavTab";
 
 
 const Main = () => {
@@ -7,7 +8,7 @@ const Main = () => {
         <>
             <Header/>
             <Promo/>
-
+            <NavTab/>
         </>
     )
 }
