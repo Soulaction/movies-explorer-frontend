@@ -1,1 +1,15 @@
 @import url('./vendor/normalize.css');
+
+/*Миксы*/
+.btn-reset {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+.list-reset {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

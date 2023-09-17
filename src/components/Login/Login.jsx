@@ -1,3 +1,9 @@
 const Login = () => {
-    return (<div></div>)
+    return (
+        <div>
+            Авторизация
+        </div>
+    )
 }
+
+export default Login;

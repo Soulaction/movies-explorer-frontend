@@ -1,3 +1,9 @@
 const Movies = () => {
-    return (<div></div>)
+    return (
+        <div>
+            Фильмы
+        </div>
+    )
 }
+
+export default Movies;

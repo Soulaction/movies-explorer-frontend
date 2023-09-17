@@ -1,3 +1,9 @@
 const SavedMovies = () => {
-    return (<div></div>)
+    return (
+        <div>
+            Сохранённые фильмы
+        </div>
+    )
 }
+
+export default SavedMovies;

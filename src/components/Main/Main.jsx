@@ -1,4 +1,12 @@
+import Header from "../Header/Header";
+
 
 const Main = () => {
-    return (<div></div>)
+    return (
+        <>
+            <Header/>
+        </>
+    )
 }
+
+export default Main;

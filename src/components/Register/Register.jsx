@@ -1,3 +1,9 @@
 const Register = () => {
-    return (<div></div>)
+    return (
+        <div>
+            Регистрация
+        </div>
+    )
 }
+
+export default Register;
