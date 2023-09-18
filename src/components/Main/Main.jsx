@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 import Promo from "../Promo/Promo";
 import NavTab from "../NavTab/NavTab";
+import AboutProject from "../AboutProject/AboutProject";
 
 
 const Main = () => {
@@ -9,6 +10,7 @@ const Main = () => {
             <Header/>
             <Promo/>
             <NavTab/>
+            <AboutProject/>
         </>
     )
 }
