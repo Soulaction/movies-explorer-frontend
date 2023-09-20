@@ -1,0 +1,138 @@
+.tech {
+    display: flex;
+    justify-content: center;
+    padding-top: 90px;
+    background-color: #272727;
+}
+
+.tech__content {
+    max-width: 1280px;
+    width: calc(100% - 70px * 2);
+}
+
+.tech__underline {
+    padding-top: 23px;
+    border-bottom: 1px solid #DADADA;
+}
+
+.tech__title {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.tech__title-info {
+    padding: 90px 0 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+}
+
+.tech__info {
+    padding: 26px 0 0;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 460px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.tech__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 90px);
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 10px;
+    padding: 100px 0;
+}
+
+.tech__list-item {
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    background-color: #303030;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.tech__list-item-name {
+    margin: auto;
+    padding: 0;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 768px) {
+    .tech__content {
+        width: calc(100% - 50px * 2);
+    }
+
+    .tech__title-info {
+        padding-top: 80px;
+    }
+
+    .tech__info {
+        padding-top: 22px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .tech__list {
+        grid-template-columns: repeat(auto-fill, 84px);
+        padding-top: 83px;
+    }
+
+    .tech__list-item {
+        min-height: 57px;
+    }
+
+    .tech__list-item-name {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .tech {
+        padding-top: 70px;
+    }
+
+    .tech__content {
+        width: calc(100% - 18px * 2);
+    }
+
+    .tech__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .tech__underline {
+        border-bottom: 1px solid #000;
+    }
+
+    .tech__info {
+        padding-top: 24px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .tech__title-info {
+        padding-top: 60px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .tech__list {
+        padding-top: 50px;
+    }
+}
