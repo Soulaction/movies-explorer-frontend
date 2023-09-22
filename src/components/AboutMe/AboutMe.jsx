@@ -15,7 +15,7 @@ const AboutMe = () => {
                         направлению:
                         "Информационная аналитика и технология больших данных"
                     </p>
-                    <a className="about-me__github" href="https://github.com/Soulaction?tab=repositories">Github</a>
+                    <a className="about-me__github" target="_blank" href="https://github.com/Soulaction?tab=repositories">Github</a>
                 </div>
                 <img className="about-me__img" src={myImg} alt="Аватарка студента"/>
             </div>
