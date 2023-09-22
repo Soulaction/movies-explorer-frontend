@@ -5,7 +5,6 @@ const AboutProject = () => {
         <section className="about-project">
             <div className="about-project__content">
                 <h1 className="about-project__title">О проекте</h1>
-                <div className="about-project__underline"></div>
                 <ul className="about-project__info-items list-reset">
                     <li className="about-project__info-item">
                         <h2 className="about-project__info-label">Дипломный проект включал 5 этапов</h2>

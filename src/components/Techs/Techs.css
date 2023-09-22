@@ -10,14 +10,10 @@
     width: calc(100% - 70px * 2);
 }
 
-.tech__underline {
-    padding-top: 23px;
-    border-bottom: 1px solid #DADADA;
-}
-
 .tech__title {
     margin: 0;
-    padding: 0;
+    padding: 0 0 23px;
+    border-bottom: 1px solid #DADADA;
     color: #fff;
     font-weight: 400;
     font-size: 22px;
@@ -46,7 +42,7 @@
 
 .tech__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 90px);
+    grid-template-columns: repeat(auto-fit, 90px);
     justify-content: center;
     width: 100%;
     margin: 0 auto;
@@ -114,9 +110,6 @@
     .tech__title {
         font-size: 18px;
         line-height: 22px;
-    }
-
-    .tech__underline {
         border-bottom: 1px solid #000;
     }
 

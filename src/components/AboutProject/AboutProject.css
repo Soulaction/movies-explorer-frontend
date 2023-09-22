@@ -12,15 +12,11 @@
 
 .about-project__title {
     margin: 0;
-    padding: 0;
+    padding: 0 0 23px;
     color: #fff;
     font-weight: 400;
     font-size: 22px;
     line-height: 27px;
-}
-
-.about-project__underline {
-    padding-top: 23px;
     border-bottom: 1px solid #DADADA;
 }
 
@@ -112,8 +108,8 @@
 }
 
 @media screen and (max-width: 640px) {
-    .about-project__underline {
-        padding-top: 28px;
+    .about-project__title {
+        padding-bottom: 28px;
     }
 
     .about-project__info-items {
