@@ -3,7 +3,7 @@ import myImg from '../../images/my-img.jpg'
 
 const AboutMe = () => {
     return (
-        <section className="about-me">
+        <section id="about-me" className="about-me">
             <div className="about-me__content">
                 <h1 className="about-me__title">Студент</h1>
                 <div className="about-me__description">

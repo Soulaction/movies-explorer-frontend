@@ -6,13 +6,13 @@ const NavTab = () => {
         <section className="nav-tab">
             <ul className="nav-tab__links-list list-reset">
                 <li className="nav-tab__link-item">
-                    <Link className="nav-tab__link" to="#">О проекте</Link>
+                    <a className="nav-tab__link" href="#about-project">О проекте</a>
                 </li>
                 <li className="nav-tab__link-item">
-                    <Link className="nav-tab__link" to="#">Технологии</Link>
+                    <a className="nav-tab__link" href="#techs">Технологии</a>
                 </li>
                 <li className="nav-tab__link-item">
-                    <Link className="nav-tab__link" to="#">Студент</Link>
+                    <a className="nav-tab__link" href="#about-me">Студент</a>
                 </li>
             </ul>
         </section>
