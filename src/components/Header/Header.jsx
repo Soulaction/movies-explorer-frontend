@@ -1,14 +1,18 @@
 import './Header.css';
 import logo from '../../images/logo.svg'
 import burgerMenu from '../../images/burger-menu.svg'
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import profile from "../../images/profile.svg";
+import profileBlack from "../../images/profile-black.svg";
 import Navigation from "../Navigation/Navigation";
 import {useState} from "react";
 
 const Header = ({loggedIn = true}) => {
     const navigate = useNavigate();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const {pathname} = useLocation();
+
+
 
     const openMenu = () => {
         setIsOpenMenu(true);
@@ -19,7 +23,7 @@ const Header = ({loggedIn = true}) => {
     }
 
     return (
-        <header className="header" aria-label="Шапка страницы">
+        <header className={`header${pathname === '/' ? '' : ' header_dark'}`} aria-label="Шапка страницы">
             <div className="header__content">
                 <NavLink to='/'><img src={logo} alt="Логотип"/></NavLink>
                 {loggedIn ?
@@ -43,7 +47,7 @@ const Header = ({loggedIn = true}) => {
                                 <li className="header__links-item">
                                     <NavLink className="header__profile"
                                              to="/profile">
-                                        <img src={profile} alt="Профиль"/>
+                                        <img src={pathname === '/' ? profile : profileBlack} alt="Профиль"/>
                                     </NavLink>
                                 </li>
                             </ul>

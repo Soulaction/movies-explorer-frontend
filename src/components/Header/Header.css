@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.header_dark {
+    background-color: #202020;
+}
+
 .header__content {
     display: flex;
     align-items: center;
