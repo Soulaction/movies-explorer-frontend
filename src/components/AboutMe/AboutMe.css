@@ -157,4 +157,8 @@
     .about-me__content {
         width: calc(100% - 14px * 2);
     }
+
+    .about-me__github {
+        margin-top: 40px;
+    }
 }
