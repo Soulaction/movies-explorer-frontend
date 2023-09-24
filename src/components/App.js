@@ -5,8 +5,7 @@ import Main from "./Main/Main";
 import SavedMovies from "./SavedMovies/SavedMovies";
 import Movies from "./Movies/Movies";
 import Profile from "./Profile/Profile";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
+import Auth from "./Auth/Auth";
 import NotFound from "./NotFound/NotFound";
 import {CurrentUserContext} from "../context/CurrentUserContext";
 import {useState} from "react";
@@ -27,8 +26,8 @@ function App() {
                             <Profile/>
                         </>
                     }></Route>
-                    <Route path="/signin" element={<Login/>}></Route>
-                    <Route path="/signup" element={<Register/>}></Route>
+                    <Route path="/signin" element={<Auth title="Рады видеть!" isLoginPage={true}/>}></Route>
+                    <Route path="/signup" element={<Auth title="Добро пожаловать!"/>}></Route>
                     <Route path="*" element={<NotFound/>}></Route>
                 </Routes>
             </div>
