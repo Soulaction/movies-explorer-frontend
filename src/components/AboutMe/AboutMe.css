@@ -11,7 +11,7 @@
             "title title"
             "info img";
     gap: 66px 270px;
-    max-width: 1280px;
+    max-width: 1140px;
     width: calc(100% - 70px * 2);
 }
 

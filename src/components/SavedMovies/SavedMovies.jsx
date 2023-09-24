@@ -1,8 +1,16 @@
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+
 const SavedMovies = () => {
     return (
-        <div>
-            Сохранённые фильмы
-        </div>
+        <>
+            <Header/>
+            <SearchForm/>
+            <MoviesCardList/>
+            <Footer/>
+        </>
     )
 }
 
