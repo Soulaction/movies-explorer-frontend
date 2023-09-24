@@ -8,20 +8,31 @@ import Profile from "./Profile/Profile";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import NotFound from "./NotFound/NotFound";
+import {CurrentUserContext} from "../context/CurrentUserContext";
+import {useState} from "react";
 
 function App() {
+    const [authUser, setAuthUser] = useState({name: 'Дмитрий', email: 'ds5@mail.ru'});
+
     return (
-        <div className="app">
-            <Routes>
-                <Route path="/" element={<Main/>}></Route>
-                <Route path="/movies" element={<Movies/>}></Route>
-                <Route path="/saved-movies" element={<SavedMovies/>}></Route>
-                <Route path="/profile" element={<Profile/>}></Route>
-                <Route path="/signin" element={<Login/>}></Route>
-                <Route path="/signup" element={<Register/>}></Route>
-                <Route path="*" element={<NotFound/>}></Route>
-            </Routes>
-        </div>
+        <CurrentUserContext.Provider value={{authUser}}>
+            <div className="app">
+                <Routes>
+                    <Route path="/" element={<Main/>}></Route>
+                    <Route path="/movies" element={<Movies/>}></Route>
+                    <Route path="/saved-movies" element={<SavedMovies/>}></Route>
+                    <Route path="/profile" element={
+                        <>
+                            <Header/>
+                            <Profile/>
+                        </>
+                    }></Route>
+                    <Route path="/signin" element={<Login/>}></Route>
+                    <Route path="/signup" element={<Register/>}></Route>
+                    <Route path="*" element={<NotFound/>}></Route>
+                </Routes>
+            </div>
+        </CurrentUserContext.Provider>
     );
 }
 
