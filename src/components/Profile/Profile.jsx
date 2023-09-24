@@ -1,9 +1,11 @@
 import './Profile.css'
 import {useContext, useEffect, useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from "../../context/CurrentUserContext";
 
 const Profile = () => {
     const {authUser} = useContext(CurrentUserContext);
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [isChange, setIsChange] = useState(true)
@@ -24,7 +26,7 @@ const Profile = () => {
     }
 
     const checkChange = () => {
-        if(authUser.name === name && authUser.email === email) {
+        if (authUser.name === name && authUser.email === email) {
             setIsChange(true);
         } else {
             setIsChange(false);
@@ -34,6 +36,10 @@ const Profile = () => {
     const editProfile = (evt) => {
         evt.preventDefault();
         console.log('Редактирование');
+    }
+
+    const logout = () => {
+        navigate('/signin')
     }
 
     return (
@@ -56,14 +62,17 @@ const Profile = () => {
                            className="profile__input"
                            value={email}
                            onChange={evt => handleChangeEmail(evt.target.value)}
-                           type="text"
+                           type="email"
                            name="email"
                            placeholder="Введите email"/>
                 </div>
                 <button className="profile__btn profile__btn_edit"
                         disabled={isChange}
-                        onClick={evt => editProfile(evt)}>Редактировать</button>
-                <button className="profile__btn profile__btn_logout">Выйти из аккаунта</button>
+                        onClick={evt => editProfile(evt)}>Редактировать
+                </button>
+                <button className="profile__btn profile__btn_logout"
+                        onClick={logout}>Выйти из аккаунта
+                </button>
             </form>
         </section>
     )
