@@ -104,4 +104,20 @@
     .header__content {
         width: calc(100% - 14px*2);
     }
+
+    .header__btn {
+        font-size: 10px;
+    }
+
+    .header__btn_signin {
+        padding: 5px 12px;
+    }
+
+    .header__btn_signup:first-of-type {
+        margin-right: 14px;
+    }
+
+    .header__burger-menu {
+        width: 40px;
+    }
 }

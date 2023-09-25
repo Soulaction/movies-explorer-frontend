@@ -74,6 +74,7 @@
 }
 
 .about-project__progress-item_front-end {
+    color: #fff;
     background-color: #303030;
 }
 
@@ -83,7 +84,7 @@
 
 .about-project__progress-item-label {
     margin: 0;
-    padding: 14px 0;
+    padding: 14px 0 0;
     color: #8B8B8B;
     text-align: center;
     font-weight: 500;
@@ -92,6 +93,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .about-project {
+        padding: 90px 0;
+    }
+
     .about-project__info-items {
         gap: 30px;
     }
@@ -104,6 +109,14 @@
     .about-project__info-content {
         font-size: 12px;
         line-height: 18px;
+    }
+
+    .about-project__progress-back-end {
+        min-width: 140px;
+    }
+
+    .about-project__progress-front-end {
+        min-width: 528px;
     }
 }
 
@@ -150,5 +163,24 @@
     .about-project__progress-item-label {
         font-size: 11px;
         line-height: 13px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .about-project {
+        padding: 70px 0;
+    }
+
+    .about-project__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project__info-content {
+        padding-top: 16px;
+    }
+
+    .about-project__progress-bar {
+        padding-top: 60px;
     }
 }

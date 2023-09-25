@@ -1,7 +1,7 @@
 .portfolio {
     display: flex;
     justify-content: center;
-    padding: 100px 0 125px;
+    padding: 100px 0 116px;
     background-color: #202020;
 }
 
@@ -35,12 +35,13 @@
 }
 
 .portfolio__link-item:last-of-type {
+    border: none;
     padding-bottom: 0;
 }
 
 .portfolio__link-name {
     margin: 0;
-    padding: 0 0;
+    padding: 0;
     color: #fff;
     font-weight: 400;
     font-size: 30px;
@@ -55,6 +56,7 @@
 
 .portfolio__link-icon {
     display: block;
+    padding: 7px;
 }
 
 
@@ -106,5 +108,10 @@
 @media screen and (max-width: 320px) {
     .portfolio__content {
         width: calc(100% - 14px * 2);
+    }
+
+    .portfolio__link-icon {
+        padding: 0 4px;
+        width: 12px;
     }
 }

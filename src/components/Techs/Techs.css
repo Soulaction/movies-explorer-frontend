@@ -1,7 +1,7 @@
 .tech {
     display: flex;
     justify-content: center;
-    padding-top: 90px;
+    padding-top: 100px;
     background-color: #272727;
 }
 
@@ -21,6 +21,7 @@
 }
 
 .tech__title-info {
+    margin: 0;
     padding: 90px 0 0;
     text-align: center;
     color: #fff;
@@ -69,6 +70,14 @@
 }
 
 @media screen and (max-width: 768px) {
+    .tech {
+        padding-top: 90px;
+    }
+
+    .tech__list {
+        padding: 83px 0 90px;
+    }
+
     .tech__content {
         width: calc(100% - 50px * 2);
     }
@@ -126,6 +135,19 @@
     }
 
     .tech__list {
-        padding-top: 50px;
+        padding: 50px 0 70px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .tech {
+        background-color: #202020;
+    }
+
+    .tech__title {
+        padding-bottom: 28px;
+    }
+
+    .tech__list {
+        grid-template-columns: repeat(2, 84px);
     }
 }
