@@ -6,6 +6,7 @@ import profile from "../../images/profile.svg";
 import profileBlack from "../../images/profile-black.svg";
 import Navigation from "../Navigation/Navigation";
 import {useState} from "react";
+import ProfileLabel from "../ProfileLabel/ProfileLabel";
 
 const Header = ({loggedIn = true}) => {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ const Header = ({loggedIn = true}) => {
                                 <li className="header__links-item">
                                     <NavLink className="header__profile"
                                              to="/profile">
-                                        <img src={pathname === '/' ? profile : profileBlack} alt="Профиль"/>
+                                        <ProfileLabel/>
                                     </NavLink>
                                 </li>
                             </ul>
