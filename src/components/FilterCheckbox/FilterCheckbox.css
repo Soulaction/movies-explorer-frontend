@@ -58,6 +58,10 @@
 
 
 @media screen and (max-width: 320px) {
+    .checkbox{
+        width: 148px;
+    }
+
     .checkbox-label{
         padding-left: 49px;
         font-size: 11px;

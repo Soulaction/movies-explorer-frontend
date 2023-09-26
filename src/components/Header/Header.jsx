@@ -6,7 +6,7 @@ import Navigation from "../Navigation/Navigation";
 import {useState} from "react";
 import ProfileLabel from "../ProfileLabel/ProfileLabel";
 
-const Header = ({loggedIn = false}) => {
+const Header = ({loggedIn = true}) => {
     const navigate = useNavigate();
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const {pathname} = useLocation();

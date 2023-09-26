@@ -48,7 +48,7 @@
     }
 
     .movies-cards__more-btn {
-        margin: 0 30px 0;
+        margin: 50px 30px 80px;
     }
 }
 
@@ -65,6 +65,6 @@
     }
 
     .movies-cards__more-btn {
-        margin: 0 10px 0;
+        margin: 50px 10px 80px;
     }
 }

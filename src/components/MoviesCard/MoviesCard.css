@@ -31,7 +31,7 @@
 .movies-card__footer {
     display: flex;
     justify-content: space-between;
-    padding: 16px 16px 0;
+    padding: 16px 24px 0 16px;
 }
 
 .movies-card__like-btn {
@@ -71,8 +71,8 @@
 }
 
 @media screen and (max-width: 768px) {
-    .movies-card__footer {
-        padding: 14px 14px 0;
+    .movies-card__poster {
+        max-height: 190px;
     }
 
     .movies-card__duration {
@@ -91,8 +91,21 @@
 }
 
 @media screen and (max-width: 320px) {
+    .movies-card__poster {
+        max-height: 168px;
+    }
+
     .movies-card__name {
         font-size: 12px;
         line-height: 15px;
+    }
+
+    .movies-card__footer {
+        padding-top: 14px;
+        padding-right: 18px;
+    }
+
+    .movies-card__duration {
+        padding: 14px;
     }
 }
