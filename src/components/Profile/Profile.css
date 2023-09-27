@@ -9,7 +9,7 @@
     max-width: 410px;
     width: 100%;
     margin-top: 74px;
-    width: calc(100% - 2*70px);
+    width: calc(100% - 2 * 70px);
 }
 
 .profile__title {
@@ -31,7 +31,7 @@
 
 .profile__input-block:last-of-type {
     border: none;
-    padding-top: 17px;
+    padding: 17px 0 0px;
 }
 
 .profile__label {
@@ -65,8 +65,8 @@
     border: none;
     outline: none;
     font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 13px;
+    line-height: 16px;
     background-color: #202020;
 }
 
@@ -80,11 +80,25 @@
     color: #EE3465;
 }
 
+@media screen and (max-width: 768px) {
+    .profile__form {
+        margin-top: 236px;
+    }
+
+    .profile__title {
+        margin-bottom: 96px;
+    }
+
+    .profile__btn_edit {
+        margin-top: 210px;
+    }
+}
+
 @media screen and (max-width: 420px) {
     .profile__form {
         max-width: 260px;
         margin-top: 70px;
-        width: calc(100% - 2*30px);
+        width: calc(100% - 2 * 30px);
     }
 
     .profile__title {
