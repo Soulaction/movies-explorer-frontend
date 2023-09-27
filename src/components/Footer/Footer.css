@@ -1,6 +1,7 @@
 .footer {
     display: flex;
     justify-content: center;
+    margin-top: auto;
     padding-top: 79px;
     background-color: #202020;
 }

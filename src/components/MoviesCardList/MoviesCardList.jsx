@@ -14,7 +14,7 @@ const MoviesCardList = () => {
                 ))}
             </ul>
             <div className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block_in-movies'}`}>
-                {pathname === '/movies' && <button className="movies-cards__more-btn">Ещё</button>}
+                <button className="movies-cards__more-btn">Ещё</button>
             </div>
         </section>
     )

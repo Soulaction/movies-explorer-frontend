@@ -17,7 +17,7 @@
 }
 
 .movies-cards__block_in-movies {
-    min-height: 140px;
+    display: none;
 }
 
 .movies-cards__more-btn {
