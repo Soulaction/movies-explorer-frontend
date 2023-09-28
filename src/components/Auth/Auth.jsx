@@ -15,7 +15,7 @@ const Auth = ({title, isLoginPage}) => {
                        type="text"
                        name="name"
                        placeholder="Введите имя"/>
-                <span className={`auth__text-error${isLoginPage ? ' auth__text-error_none' : ''}`}>
+                <span className={`auth__text-error auth__text-error_hidden${isLoginPage ? ' auth__text-error_none' : ''}`}>
                     Что-то пошло не так...
                 </span>
                 <label className="auth__label" htmlFor="input-email">E-mail</label>
@@ -24,7 +24,7 @@ const Auth = ({title, isLoginPage}) => {
                        type="email"
                        name="email"
                        placeholder="Введите email"/>
-                <span className="auth__text-error">Что-то пошло не так...</span>
+                <span className="auth__text-error auth__text-error_hidden">Что-то пошло не так...</span>
                 <label className="auth__label" htmlFor="input-email">Пароль</label>
                 <input id="input-password"
                        className="auth__input auth__input_error"

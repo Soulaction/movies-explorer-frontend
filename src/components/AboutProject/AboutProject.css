@@ -112,11 +112,13 @@
     }
 
     .about-project__progress-back-end {
-        min-width: 140px;
+        max-width: 140px;
+        width: 100%;
     }
 
     .about-project__progress-front-end {
-        min-width: 528px;
+        max-width: 528px;
+        width: 100%;
     }
 }
 

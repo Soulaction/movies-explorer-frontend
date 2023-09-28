@@ -42,6 +42,11 @@
     line-height: 18px;
     text-decoration: none;
     color: #fff;
+    transition: opacity .3s linear;
+}
+
+.header__link:hover {
+    opacity: .7;
 }
 
 .header__links-item:last-of-type {

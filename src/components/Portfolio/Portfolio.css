@@ -57,8 +57,13 @@
 .portfolio__link-icon {
     display: block;
     padding: 7px;
+    transition: opacity .3s linear;
 }
 
+.portfolio__link-icon:hover {
+    opacity: .7;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 768px) {
     .portfolio__content {

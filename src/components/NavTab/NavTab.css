@@ -27,6 +27,11 @@
     font-weight: 500;
     line-height: 16px;
     text-decoration: none;
+    transition: opacity .3s linear;
+}
+
+.nav-tab__link:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 320px) {

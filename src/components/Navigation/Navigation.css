@@ -51,6 +51,11 @@
         line-height: 21px;
         color: #fff;
         text-decoration: none;
+        transition: opacity .3s linear;
+    }
+
+    .navigation__link:hover {
+        opacity: .7;
     }
 
     .navigation__link_active {

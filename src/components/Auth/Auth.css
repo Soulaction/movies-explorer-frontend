@@ -87,7 +87,12 @@
     font-size: 14px;
     line-height: 17px;
     color: #fff;
-    background-color: #4285F4;
+    background-color: rgba(66, 133, 244, 1);
+    transition: background-color .3s linear;
+}
+
+.auth__btn:hover {
+    background-color: rgba(66, 133, 244, .8);
 }
 
 .auth__btn_login {
@@ -110,6 +115,11 @@
     line-height: 17px;
     color: #4285F4;
     text-decoration: none;
+    transition: background-color .3s linear;
+}
+
+.auth__link:hover {
+    opacity: .7;
 }
 
 @media screen and (max-width: 420px) {
