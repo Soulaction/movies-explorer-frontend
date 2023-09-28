@@ -9,6 +9,10 @@
     background-color: #202020;
 }
 
+.profile-account__img_dark {
+    background-color: #313131;
+}
+
 .profile-account__name {
     display: block;
     margin: 0;

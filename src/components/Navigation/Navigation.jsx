@@ -1,6 +1,7 @@
 import './Navigation.css'
 import profileBlack from '../../images/profile-black.svg'
 import {NavLink} from "react-router-dom";
+import ProfileLabel from "../ProfileLabel/ProfileLabel";
 
 const Navigation = ({onCloseMenu}) => {
     return (
