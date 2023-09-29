@@ -1,5 +1,5 @@
 import './MoviesCardList.css'
-import {arrayCards} from "../utils/constant";
+import {arrayCards} from "../../utils/constant";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
@@ -19,7 +19,7 @@ const MoviesCardList = () => {
                 <>
                     <ul className="movies-card__list list-reset">
                         {arrayCards.map(card => (
-                            <MoviesCard {...card}/>
+                            <MoviesCard key={card.id} {...card}/>
                         ))}
                     </ul>
                     <div

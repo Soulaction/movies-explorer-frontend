@@ -1,10 +1,22 @@
 import './Auth.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import logo from '../../images/logo.svg'
 
 const Auth = ({title, isLoginPage}) => {
+    const navigate = useNavigate();
+
+    const register = (evt) => {
+        evt.preventDefault();
+        navigate('/');
+    }
+
+    const auth = (evt) => {
+        evt.preventDefault();
+        navigate('/signin');
+    }
+
     return (
-        <sectinon className="auth">
+        <section className="auth">
             <form className="auth__form" name="auth-user" noValidate>
                 <img className="auth__logo" src={logo}/>
                 <h1 className="auth__title">{title}</h1>
@@ -15,7 +27,8 @@ const Auth = ({title, isLoginPage}) => {
                        type="text"
                        name="name"
                        placeholder="Введите имя"/>
-                <span className={`auth__text-error auth__text-error_hidden${isLoginPage ? ' auth__text-error_none' : ''}`}>
+                <span
+                    className={`auth__text-error auth__text-error_hidden${isLoginPage ? ' auth__text-error_none' : ''}`}>
                     Что-то пошло не так...
                 </span>
                 <label className="auth__label" htmlFor="input-email">E-mail</label>
@@ -32,14 +45,19 @@ const Auth = ({title, isLoginPage}) => {
                        name="password"
                        placeholder="Введите пароль"/>
                 <span className="auth__text-error">Что-то пошло не так...</span>
-                <button className={`auth__btn${isLoginPage ? ' auth__btn_login' : ''}`}>{isLoginPage ? 'Войти' : 'Зарегестрироваться'}</button>
+                <button className={`auth__btn${isLoginPage ? ' auth__btn_login' : ''}`}
+                        onClick={(evt) => {
+                            isLoginPage ? register(evt) : auth(evt)
+                        }}>
+                    {isLoginPage ? 'Войти' : 'Зарегестрироваться'}
+                </button>
                 <p className="auth__text">
                     {isLoginPage ? 'Ещё не зарегестрированы? ' : 'Уже зарегестрированы? '}
                     <NavLink className="auth__link"
                              to={isLoginPage ? '/signup' : '/signin'}>{isLoginPage ? 'Регистрация' : 'Войти'}</NavLink>
                 </p>
             </form>
-        </sectinon>
+        </section>
     )
 }
 

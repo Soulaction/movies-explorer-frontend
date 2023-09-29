@@ -3,6 +3,7 @@ import like from '../../images/icon-like.svg'
 import unlike from '../../images/icon-unlike.svg'
 import deleteMovie from '../../images/icon-delete.svg'
 import {useLocation} from "react-router-dom";
+import Preloader from "../Preloader/Preloader";
 
 const MoviesCard = ({image, duration, nameRU, owner}) => {
     const {pathname} = useLocation();
