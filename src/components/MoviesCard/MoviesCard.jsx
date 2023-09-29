@@ -11,9 +11,9 @@ const MoviesCard = ({image, duration, nameRU, owner}) => {
             return {src: deleteMovie, alt: 'Картинка удаления'};
         }
         if (owner === 1) {
-            return  {src: like, alt: 'Картинка лайка'};
+            return {src: like, alt: 'Картинка лайка'};
         } else {
-            return  {src: unlike, alt: 'Картинка дизлайка'};
+            return {src: unlike, alt: 'Картинка дизлайка'};
         }
     }
 
@@ -21,13 +21,14 @@ const MoviesCard = ({image, duration, nameRU, owner}) => {
     return (
         <li className="movies-card">
             <img className="movies-card__poster" src={image} alt="Картинка фильма"/>
-            <div className="movies-card__footer">
+                <div className="movies-card__footer">
                 <h1 className="movies-card__name">{nameRU}</h1>
                 <button className="movies-card__like-btn">
-                    <img className={`movies-card__like-img${pathname === '/saved-movies' ? ' movies-card__delete-card' : ''}`} src={isLike().src} alt={isLike().alt}/>
+                <img className={`movies-card__like-img${pathname === '/saved-movies' ? ' movies-card__delete-card' : ''}`} src={isLike().src} alt={isLike().alt}/>
                 </button>
-            </div>
-            <p className="movies-card__duration">{duration}</p>
+                </div>
+                <p className="movies-card__duration">{duration}</p>
+            }
         </li>
     )
 }
