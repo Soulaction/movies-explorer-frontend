@@ -37,11 +37,13 @@
 
     .navigation__links-item {
         margin: 0 auto 28px;
+        text-decoration: none;
     }
 
     .navigation__links-item:last-of-type {
         position: absolute;
         bottom: 90px;
+        margin: 0;
     }
 
     .navigation__link {
@@ -79,6 +81,11 @@
 
     .navigation__menu {
         padding-top: 106px;
+    }
+
+    .navigation__links-item {
+        margin-bottom: 24px;
+        text-decoration: none;
     }
 
     .navigation__links-item:last-of-type {

@@ -36,7 +36,7 @@ const Navigation = ({onCloseMenu}) => {
                         </li>
                         <li className="navigation__links-item">
                             <NavLink to="/profile"  onClick={onCloseMenu}>
-                                <img src={profileBlack} alt="Профиль"/>
+                                <ProfileLabel/>
                             </NavLink>
                         </li>
                     </ul>
