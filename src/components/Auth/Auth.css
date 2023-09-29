@@ -9,6 +9,10 @@
     display: block;
 }
 
+.auth__logo-img {
+    display: block;
+}
+
 .auth__form {
     margin-top: 70px;
     max-width: 396px;
@@ -125,6 +129,10 @@
 
 @media screen and (max-width: 420px) {
     .auth__logo {
+        text-align: center;
+    }
+
+    .auth__logo-img {
         margin: 0 auto;
     }
 

@@ -18,7 +18,7 @@ const Auth = ({title, isLoginPage}) => {
     return (
         <section className="auth">
             <form className="auth__form" name="auth-user" noValidate>
-                <img className="auth__logo" src={logo}/>
+                <NavLink className="auth__logo" to='/'><img className="auth__logo-img" src={logo} alt="Логотип"/></NavLink>
                 <h1 className="auth__title">{title}</h1>
                 <label className={`auth__label${isLoginPage ? ' auth__label_none' : ''}`}
                        htmlFor="input-name">Имя</label>

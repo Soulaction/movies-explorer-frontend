@@ -39,7 +39,7 @@ const Profile = () => {
     }
 
     const logout = () => {
-        navigate('/signin')
+        navigate('/')
     }
 
     return (
