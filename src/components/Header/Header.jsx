@@ -44,7 +44,7 @@ const Header = ({loggedIn = true}) => {
                                     </NavLink>
                                 </li>
                                 <li className="header__links-item">
-                                    <NavLink className="header__profile"
+                                    <NavLink className="header__profile-link"
                                              to="/profile">
                                         <ProfileLabel/>
                                     </NavLink>

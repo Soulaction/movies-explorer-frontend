@@ -82,8 +82,9 @@
     color: #000;
 }
 
-.header__profile {
+.header__profile-link {
     display: block;
+    text-decoration: none;
 }
 
 .header__burger-menu {

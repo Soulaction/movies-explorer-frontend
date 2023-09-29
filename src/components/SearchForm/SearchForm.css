@@ -47,6 +47,12 @@
     outline: 0;
     border: none;
     border-radius: 50%;
+    transition: opacity .3s linear;
+}
+
+.search__button:hover {
+    opacity: .8;
+    cursor: pointer;
 }
 
 .search__button-icon {
