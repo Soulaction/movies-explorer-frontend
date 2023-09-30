@@ -8,7 +8,7 @@ const SearchForm = () => {
             <form className="search__form" name="search-form" noValidate>
                 <div className="search__text">
                     <input className="search__input" name="search-text" type="text" placeholder="Фильм"/>
-                    <button className="search__button" aria-label="Кнопка поиска">
+                    <button className="search__button" type="submit" aria-label="Кнопка поиска">
                         <img className="search__button-icon" src={findIcon} alt="Иконка поиска"/>
                     </button>
                 </div>

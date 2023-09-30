@@ -5,7 +5,7 @@ const Portfolio = () => {
     return (
         <section className="portfolio">
             <div className="portfolio__content">
-                <h1 className="portfolio__title">Портфолио</h1>
+                <h2 className="portfolio__title">Портфолио</h2>
                 <ul className="portfolio__links list-reset">
                     <li className="portfolio__link-item">
                         <a className="portfolio__link" target="_blank"

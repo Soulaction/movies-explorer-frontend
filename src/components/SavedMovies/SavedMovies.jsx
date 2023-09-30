@@ -1,3 +1,4 @@
+import './SavedMovies.css'
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -7,8 +8,10 @@ const SavedMovies = () => {
     return (
         <>
             <Header/>
-            <SearchForm/>
-            <MoviesCardList/>
+            <main className="save-movies">
+                <SearchForm/>
+                <MoviesCardList/>
+            </main>
             <Footer/>
         </>
     )

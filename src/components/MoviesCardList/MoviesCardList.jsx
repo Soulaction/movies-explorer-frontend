@@ -22,10 +22,10 @@ const MoviesCardList = () => {
                             <MoviesCard key={card.id} {...card}/>
                         ))}
                     </ul>
-                    <div
+                    {!(arrayCards.length === 0) && <div
                         className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block_in-movies'}`}>
-                        <button className="movies-cards__more-btn">Ещё</button>
-                    </div>
+                        <button className="movies-cards__more-btn" type="button">Ещё</button>
+                    </div>}
                 </>
             }
         </section>

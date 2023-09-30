@@ -5,9 +5,9 @@ const AboutMe = () => {
     return (
         <section id="about-me" className="about-me">
             <div className="about-me__content">
-                <h1 className="about-me__title">Студент</h1>
+                <h2 className="about-me__title">Студент</h2>
                 <div className="about-me__description">
-                    <h1 className="about-me__name">Дмитрий</h1>
+                    <h3 className="about-me__name">Дмитрий</h3>
                     <p className="about-me__subtitle">Фронтенд-разработчик, 23 года</p>
                     <p className="about-me__info">
                         Я родился в Тверской области, на данный момент проживаю в городе Москва.

@@ -1,8 +1,7 @@
 .footer {
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    padding-top: 79px;
+    padding-top: 77px;
     background-color: #202020;
 }
 
@@ -38,6 +37,10 @@
     line-height: 16px;
 }
 
+.footer__nav-list {
+    display: flex;
+}
+
 .footer__link {
     margin: 0;
     padding: 0;
@@ -53,7 +56,7 @@
     opacity: .7;
 }
 
-.footer__link:first-of-type {
+.footer__nav-item:first-of-type {
     padding-right: 20px;
 }
 
@@ -89,8 +92,7 @@
         line-height: 15px;
     }
 
-    .footer__nav {
-        display: flex;
+    .footer__nav-list {
         flex-direction: column;
         align-items: center;
         padding: 30px;
@@ -106,7 +108,7 @@
         padding-top: 0;
     }
 
-    .footer__link:first-of-type {
+    .footer__nav-item:first-of-type {
         padding: 0 0 12px;
     }
 }

@@ -12,12 +12,14 @@ const Main = () => {
     return (
         <>
             <Header/>
-            <Promo/>
-            <NavTab/>
-            <AboutProject/>
-            <Techs/>
-            <AboutMe/>
-            <Portfolio/>
+            <main className="main">
+                <Promo/>
+                <NavTab/>
+                <AboutProject/>
+                <Techs/>
+                <AboutMe/>
+                <Portfolio/>
+            </main>
             <Footer/>
         </>
     )

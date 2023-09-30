@@ -51,23 +51,29 @@ const Header = ({loggedIn = true}) => {
                                 </li>
                             </ul>
                         </nav>
-                        <img className="header__burger-menu"
-                             onClick={openMenu}
+                        <button className="header__burger-menu-btn btn-reset"
+                                type="button"
+                                aria-label="Кнопка меню"
+                                onClick={openMenu}>
+                        <img className="header__burger-menu-img"
                              src={burgerMenu}
                              alt="Меню"/>
+                        </button>
                     </>
                     :
                     <>
-                        <div className="header__btns">
+                        <nav className="header__btns">
                             <button className="header__btn header__btn_signup btn-reset"
+                                    type="button"
                                     onClick={() => navigate('/signup')}>
                                 Регистрация
                             </button>
                             <button className="header__btn header__btn_signin btn-reset"
+                                    type="button"
                                     onClick={() => navigate('/signin')}>
                                 Войти
                             </button>
-                        </div>
+                        </nav>
                     </>
                 }
             </div>

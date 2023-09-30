@@ -87,7 +87,7 @@
     text-decoration: none;
 }
 
-.header__burger-menu {
+.header__burger-menu-btn {
     display: none;
 }
 
@@ -100,9 +100,14 @@
         display: none;
     }
 
-    .header__burger-menu {
+    .header__burger-menu-btn {
         display: block;
         margin-left: auto;
+        cursor: pointer;
+    }
+
+    .header__burger-menu-img {
+        display: block;
     }
 }
 
@@ -123,7 +128,7 @@
         margin-right: 14px;
     }
 
-    .header__burger-menu {
-        width: 40px;
+    .header__burger-menu-img {
+        width: 37px;
     }
 }
