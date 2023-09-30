@@ -38,7 +38,7 @@ const Navigation = ({onCloseMenu}) => {
                         </li>
                         <li className="navigation__links-item">
                             <NavLink to="/profile"  onClick={onCloseMenu}>
-                                <ProfileLabel/>
+                                <ProfileLabel isMenu={true}/>
                             </NavLink>
                         </li>
                     </ul>
