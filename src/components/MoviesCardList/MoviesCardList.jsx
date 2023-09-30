@@ -17,13 +17,13 @@ const MoviesCardList = () => {
             {isLoading && <Preloader/>}
             {!isLoading &&
                 <>
-                    <ul className="movies-card__list list-reset">
+                    <ul className="movies-cards__list list-reset">
                         {arrayCards.map(card => (
                             <MoviesCard key={card.id} {...card}/>
                         ))}
                     </ul>
                     {!(arrayCards.length === 0) && <div
-                        className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block_in-movies'}`}>
+                        className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block-not'}`}>
                         <button className="movies-cards__more-btn" type="button">Ещё</button>
                     </div>}
                 </>

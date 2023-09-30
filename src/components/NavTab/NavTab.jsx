@@ -2,7 +2,7 @@ import './NavTab.css'
 
 const NavTab = () => {
     return (
-        <section className="nav-tab">
+        <section className="nav-tab" aria-label="Раздел навигации по странице">
             <nav  className="nav-tab__navigation">
                 <ul className="nav-tab__links-list list-reset">
                     <li className="nav-tab__link-item">

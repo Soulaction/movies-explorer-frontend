@@ -2,7 +2,7 @@
     background-color: #202020;
 }
 
-.movies-card__list {
+.movies-cards__list {
     display: grid;
     gap: 37px 24px;
     justify-content: center;
@@ -16,7 +16,7 @@
     min-height: 166px;
 }
 
-.movies-cards__block_in-movies {
+.movies-cards__block-not {
     display: none;
 }
 
