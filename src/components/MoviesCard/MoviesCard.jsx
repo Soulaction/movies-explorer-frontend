@@ -22,14 +22,15 @@ const MoviesCard = ({image, duration, nameRU, owner}) => {
     return (
         <li className="movies-card">
             <img className="movies-card__poster" src={image} alt="Картинка фильма"/>
-                <div className="movies-card__footer">
-                <h1 className="movies-card__name">{nameRU}</h1>
-                <button className="movies-card__like-btn">
-                <img className={`movies-card__like-img${pathname === '/saved-movies' ? ' movies-card__delete-card' : ''}`} src={isLike().src} alt={isLike().alt}/>
+            <div className="movies-card__footer">
+                <h2 className="movies-card__name">{nameRU}</h2>
+                <button className="movies-card__like-btn" type="button">
+                    <img
+                        className={`movies-card__like-img${pathname === '/saved-movies' ? ' movies-card__delete-card' : ''}`}
+                        src={isLike().src} alt={isLike().alt}/>
                 </button>
-                </div>
-                <p className="movies-card__duration">{duration}</p>
-            }
+            </div>
+            <p className="movies-card__duration">{duration}</p>
         </li>
     )
 }

@@ -7,7 +7,9 @@ const Navigation = ({onCloseMenu}) => {
     return (
         <aside className="navigation">
             <div className="navigation__content">
-                <button className="navigation__btn-close btn-reset" onClick={onCloseMenu}></button>
+                <button className="navigation__btn-close btn-reset"
+                        type="button"
+                        aria-label="Кнопка закрытия панили навигации" onClick={onCloseMenu}></button>
                 <nav className="navigation__menu">
                     <ul className="navigation__links-list list-reset">
                         <li className="navigation__links-item">
@@ -36,7 +38,7 @@ const Navigation = ({onCloseMenu}) => {
                         </li>
                         <li className="navigation__links-item">
                             <NavLink to="/profile"  onClick={onCloseMenu}>
-                                <img src={profileBlack} alt="Профиль"/>
+                                <ProfileLabel isMenu={true}/>
                             </NavLink>
                         </li>
                     </ul>

@@ -4,8 +4,8 @@ const Techs = () => {
     return (
         <section id="techs" className="tech">
             <div className="tech__content">
-                <h1 className="tech__title">Технологии</h1>
-                <h2 className="tech__title-info">7 технологий</h2>
+                <h2 className="tech__title">Технологии</h2>
+                <h3 className="tech__title-info">7 технологий</h3>
                 <p className="tech__info">
                     На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
                 </p>

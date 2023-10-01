@@ -1,4 +1,4 @@
-.auth {
+.auth-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,6 +6,10 @@
 }
 
 .auth__logo {
+    display: block;
+}
+
+.auth__logo-img {
     display: block;
 }
 
@@ -125,6 +129,10 @@
 
 @media screen and (max-width: 420px) {
     .auth__logo {
+        text-align: center;
+    }
+
+    .auth__logo-img {
         margin: 0 auto;
     }
 

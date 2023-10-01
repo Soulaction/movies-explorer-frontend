@@ -8,8 +8,14 @@ const Footer = () => {
                 <div className="footer__wrapper">
                     <p className="footer__year">&copy; 2023</p>
                     <nav className="footer__nav">
-                        <a className="footer__link" href="https://practicum.yandex.ru" target="_blank">Яндекс.Практикум</a>
-                        <a className="footer__link" href="https://github.com/Soulaction?tab=projects" target="_blank">Github</a>
+                        <ul className="footer__nav-list list-reset">
+                            <li className="footer__nav-item">
+                                <a className="footer__link" href="https://practicum.yandex.ru" target="_blank">Яндекс.Практикум</a>
+                            </li>
+                            <li className="footer__nav-item">
+                                <a className="footer__link" href="https://github.com/Soulaction?tab=projects" target="_blank">Github</a>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
