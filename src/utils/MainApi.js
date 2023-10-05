@@ -9,7 +9,7 @@ class MainApi {
                 return res.json();
             } else {
                 return res.json().then(err => {
-                    throw err.message;
+                    throw err;
                 })
             }
         })
@@ -21,8 +21,8 @@ class MainApi {
         })
     }
 
-    login(user) {
-        return this._fetch('/signin', {
+    registration(user) {
+        return this._fetch('/signup', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -85,4 +85,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi('https://api.film.nomoredomainsicu.ru')
+export const mainApi = new MainApi('http://localhost:3000')

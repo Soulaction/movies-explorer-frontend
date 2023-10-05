@@ -37,10 +37,6 @@
     line-height: 12px;
 }
 
-.auth__label_none {
-    display: none;
-}
-
 .auth__input {
     display: block;
     box-sizing: border-box;
@@ -57,29 +53,18 @@
     cursor: pointer;
 }
 
-.auth__input_none {
-    display: none;
-}
-
 .auth__input_error {
     color: #EE3465;
 }
 
 .auth__text-error {
     display: block;
+    min-height: 24px;
     padding-top: 10px;
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
-}
-
-.auth__text-error_hidden {
-    visibility: hidden;
-}
-
-.auth__text-error_none {
-    display: none;
 }
 
 .auth__btn {
@@ -102,6 +87,12 @@
 
 .auth__btn_login {
     margin-top: 157px;
+}
+
+.auth__btn:disabled {
+    cursor: default;
+    background-color: #F8F8F8;
+    color: #C2C2C2;
 }
 
 .auth__text {
