@@ -1,15 +1,10 @@
 import './MoviesCardList.css'
-import {arrayCards} from "../../utils/constant";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 import {useState} from "react";
 
-const MoviesCardList = () => {
-    const [isLoading, setIsLoading] = useState(true)
-    setTimeout(() => {
-        setIsLoading(false);
-    }, 1000)
+const MoviesCardList = ({movies, isLoading}) => {
     const {pathname} = useLocation();
 
     return (
@@ -18,13 +13,16 @@ const MoviesCardList = () => {
             {!isLoading &&
                 <>
                     <ul className="movies-cards__list list-reset">
-                        {arrayCards.map(card => (
+                        {movies.map(card => (
                             <MoviesCard key={card.id} {...card}/>
                         ))}
                     </ul>
-                    {!(arrayCards.length === 0) && <div
-                        className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block-not'}`}>
+                    {<div className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block-not'}`}>
                         <button className="movies-cards__more-btn" type="button">Ещё</button>
+                        <h1 className='movies-cards__error-search'>
+                            Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.
+                            Подождите немного и попробуйте ещё раз
+                        </h1>
                     </div>}
                 </>
             }

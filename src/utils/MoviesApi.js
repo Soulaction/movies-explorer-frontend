@@ -17,3 +17,5 @@ class MoviesApi {
         })
     }
 }
+
+export const moviesApi = new MoviesApi();

@@ -45,7 +45,7 @@ class MainApi {
     }
 
     updateUser(user) {
-        this._fetch('/users/me', {
+        return this._fetch('/users/me', {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -56,14 +56,14 @@ class MainApi {
     }
 
     getMovies() {
-        this._fetch('/movies', {
+        return this._fetch('/movies', {
             method: 'GET',
             credentials: 'include'
         })
     }
 
     createMovies(movie) {
-        this._fetch('/movies', {
+        return this._fetch('/movies', {
             method: 'POST',
             header: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -74,14 +74,17 @@ class MainApi {
     }
 
     deleteMovies(movieId) {
-        this._fetch('/movies/' + movieId, {
-            method: 'DELETE'
+        return this._fetch('/movies/' + movieId, {
+            method: 'DELETE',
+            credentials: 'include'
         });
     }
 
     logout() {
-        this._fetch('/signout', {
-            method: 'GET'
+        return this._fetch('/signout', {
+            method: 'GET',
+            credentials: 'include'
+
         });
     }
 }

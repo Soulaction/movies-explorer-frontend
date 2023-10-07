@@ -10,6 +10,7 @@ import {CurrentUserContext} from "../../context/CurrentUserContext";
 const Header = () => {
     const navigate = useNavigate();
     const {loggedIn} = useContext(CurrentUserContext);
+    console.log('header', loggedIn);
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const {pathname} = useLocation();
 

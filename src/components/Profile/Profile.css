@@ -80,6 +80,11 @@
     cursor: pointer;
 }
 
+.profile__btn:disabled {
+    opacity: .7;
+    cursor: default;
+}
+
 .profile__btn_edit {
     margin: 220px auto 0;
     color: #fff;

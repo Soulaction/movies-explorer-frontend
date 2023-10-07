@@ -6,7 +6,7 @@ import {mainApi} from "../../utils/MainApi";
 import InfoMessage from "../InfoMessage/InfoMessage";
 import {useState} from "react";
 
-const Auth = ({title, isLoginPage}) => {
+const Auth = ({title, handleLogin, isLoginPage}) => {
     const navigate = useNavigate();
     const {values, errors, handleChange, isValid, resetForm} = useFormWithValidation();
     const [infoObject, setInfoObject] = useState({});
@@ -37,6 +37,7 @@ const Auth = ({title, isLoginPage}) => {
     const auth = (evt) => {
         evt.preventDefault();
         mainApi.login(values).then(res => {
+            handleLogin(true);
             navigate('/');
         }).catch(err => {
             setInfoObject({
