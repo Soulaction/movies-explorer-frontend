@@ -16,10 +16,6 @@
     min-height: 166px;
 }
 
-.movies-cards__block-not {
-    display: none;
-}
-
 .movies-cards__error-search {
     margin: 0;
     padding: 0;

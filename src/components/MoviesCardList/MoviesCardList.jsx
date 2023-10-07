@@ -1,11 +1,30 @@
 import './MoviesCardList.css'
 import MoviesCard from "../MoviesCard/MoviesCard";
-import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getInitMovies, getLoadMovies} from "../../utils/utils";
 
-const MoviesCardList = ({movies, isLoading}) => {
-    const {pathname} = useLocation();
+const MoviesCardList = ({movies, isLoading, errorMovies}) => {
+    const [widthWindow, setWidthWindow] = useState(0);
+    const [paramsLoadMovies, setParamsLoadMovies] = useState(getInitMovies(window.innerWidth));
+
+    useEffect(() => {
+        const changeWidthWindow = () => {
+            setWidthWindow(window.innerWidth)
+            setParamsLoadMovies((params) => {
+                return {...params, ...getLoadMovies(widthWindow)}
+            });
+        }
+        changeWidthWindow();
+        window.addEventListener('resize', changeWidthWindow)
+        return () => window.removeEventListener('resize', changeWidthWindow);
+    }, [widthWindow, movies])
+
+    const loadMovies = () => {
+        setParamsLoadMovies((params) => {
+            return {...params, initialCount: params.initialCount + params.loadCount}
+        });
+    }
 
     return (
         <section className="movies-cards">
@@ -13,17 +32,22 @@ const MoviesCardList = ({movies, isLoading}) => {
             {!isLoading &&
                 <>
                     <ul className="movies-cards__list list-reset">
-                        {movies.map(card => (
+                        {movies.slice(0, paramsLoadMovies.initialCount).map(card => (
                             <MoviesCard key={card.id} {...card}/>
                         ))}
                     </ul>
-                    {<div className={`${pathname === '/movies' ? 'movies-cards__block' : 'movies-cards__block-not'}`}>
-                        <button className="movies-cards__more-btn" type="button">Ещё</button>
-                        <h1 className='movies-cards__error-search'>
-                            Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.
-                            Подождите немного и попробуйте ещё раз
-                        </h1>
-                    </div>}
+                    {paramsLoadMovies.initialCount < movies.length &&
+                        <div className='movies-cards__block'>
+                            <button className="movies-cards__more-btn"
+                                    onClick={loadMovies}
+                                    type="button">Ещё</button>
+                        </div>}
+                    {errorMovies &&
+                        <div className='movies-cards__block'>
+                            <h1 className='movies-cards__error-search'>
+                                {errorMovies}
+                            </h1>
+                        </div>}
                 </>
             }
         </section>

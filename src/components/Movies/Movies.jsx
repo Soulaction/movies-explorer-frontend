@@ -10,6 +10,7 @@ import {useState} from "react";
 const Movies = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [movies, setMovies] = useState([]);
+    const [errorMovies, setErrorMovies] = useState('');
 
     const searchFilms = () => {
         setIsLoading(true);
@@ -19,6 +20,7 @@ const Movies = () => {
             setIsLoading(true);
         }).catch(err => {
             console.log(err);
+            setErrorMovies('')
         }).finally(() => {
             setIsLoading(false);
         });
@@ -30,6 +32,7 @@ const Movies = () => {
             <main className="movies">
                 <SearchForm searchFilms={searchFilms}/>
                 <MoviesCardList movies={movies}
+                                errorMovies={errorMovies}
                                 isLoading={isLoading}/>
             </main>
             <Footer/>
