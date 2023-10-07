@@ -8,23 +8,55 @@ import Profile from "./Profile/Profile";
 import Auth from "./Auth/Auth";
 import NotFound from "./NotFound/NotFound";
 import {CurrentUserContext} from "../context/CurrentUserContext";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {mainApi} from "../utils/MainApi";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 function App() {
-    const [authUser, setAuthUser] = useState({name: 'Дмитрий', email: 'ds5@mail.ru'});
+    const [authUser, setAuthUser] = useState({loggedIn: false});
+
+    useEffect(() => {
+        mainApi.getUserInfo().then((res) => {
+            if (res) {
+                setAuthUser((user) => {
+                    return {... user, ...res.data, loggedIn: true}
+                });
+                console.log(authUser);
+            }
+        }).catch(err => {
+            console.log(err.message);
+        })
+
+    }, [authUser.loggedIn]);
+
+    const handleLogin = (isLogin) => {
+        setAuthUser((user) => {
+            return {... user, loggedIn: isLogin}
+        });
+    }
 
     return (
-        <CurrentUserContext.Provider value={{authUser}}>
+        <CurrentUserContext.Provider value={authUser}>
             <div className="app">
                 <Routes>
                     <Route path="/" element={<Main/>}></Route>
-                    <Route path="/movies" element={<Movies/>}></Route>
-                    <Route path="/saved-movies" element={<SavedMovies/>}></Route>
+                    <Route path="/movies" element={
+                        <ProtectedRoute
+                            element={Movies}/>}>
+                    </Route>
+                    <Route path="/saved-movies" element={
+                        <ProtectedRoute
+                            element={SavedMovies}/>}>
+
+                    </Route>
                     <Route path="/profile" element={
-                        <>
-                            <Header/>
-                            <Profile/>
-                        </>
+                        <ProtectedRoute
+                            element={
+                                <>
+                                    <Header/>
+                                    <Profile/>
+                                </>
+                            }/>
                     }></Route>
                     <Route path="/signin" element={<Auth title="Рады видеть!" isLoginPage={true}/>}></Route>
                     <Route path="/signup" element={<Auth title="Добро пожаловать!"/>}></Route>

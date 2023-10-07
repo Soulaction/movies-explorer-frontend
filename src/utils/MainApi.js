@@ -17,7 +17,8 @@ class MainApi {
 
     getUserInfo() {
         return this._fetch('/users/me', {
-            method: 'GET'
+            method: 'GET',
+            credentials: 'include'
         })
     }
 

@@ -78,6 +78,7 @@
     line-height: 17px;
     color: #fff;
     background-color: rgba(66, 133, 244, 1);
+    cursor: pointer;
     transition: background-color .3s linear;
 }
 
