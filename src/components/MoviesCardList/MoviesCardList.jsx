@@ -4,7 +4,7 @@ import Preloader from "../Preloader/Preloader";
 import {useEffect, useState} from "react";
 import {getInitMovies, getLoadMovies} from "../../utils/utils";
 
-const MoviesCardList = ({movies, isLoading, errorMovies}) => {
+const MoviesCardList = ({movies, savedMovies, isLoading, errorMovies, addMovies, deleteMovies, isSavedPage}) => {
     const [widthWindow, setWidthWindow] = useState(0);
     const [paramsLoadMovies, setParamsLoadMovies] = useState(getInitMovies(window.innerWidth));
 
@@ -26,21 +26,38 @@ const MoviesCardList = ({movies, isLoading, errorMovies}) => {
         });
     }
 
+    const checkSaved = (movie) => {
+        console.log(movie, savedMovies,);
+        return !!savedMovies.find(el => el.movieId === movie.id);
+    }
+
     return (
         <section className="movies-cards">
             {isLoading && <Preloader/>}
             {!isLoading &&
                 <>
                     <ul className="movies-cards__list list-reset">
-                        {movies.slice(0, paramsLoadMovies.initialCount).map(card => (
-                            <MoviesCard key={card.id} {...card}/>
+                        {movies.slice(0, paramsLoadMovies.initialCount).map(movie => (
+                            isSavedPage ?
+                                <MoviesCard key={movie._id}
+                                            deleteMovies={deleteMovies}
+                                            isSavedPage={isSavedPage}
+                                            movie={movie}/>
+                                :
+                                <MoviesCard key={movie.id ? movie.id : movie._id}
+                                            isSaved={checkSaved(movie)}
+                                            addMovies={addMovies}
+                                            deleteMovies={deleteMovies}
+                                            isSavedPage={isSavedPage}
+                                            movie={movie}/>
                         ))}
                     </ul>
                     {paramsLoadMovies.initialCount < movies.length &&
                         <div className='movies-cards__block'>
                             <button className="movies-cards__more-btn"
                                     onClick={loadMovies}
-                                    type="button">Ещё</button>
+                                    type="button">Ещё
+                            </button>
                         </div>}
                     {errorMovies &&
                         <div className='movies-cards__block'>

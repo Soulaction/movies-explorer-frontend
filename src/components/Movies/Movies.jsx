@@ -3,11 +3,10 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import searchForm from "../SearchForm/SearchForm";
 import {moviesApi} from "../../utils/MoviesApi";
 import {useState} from "react";
 
-const Movies = () => {
+const Movies = ({savedMovies, addMovies, deleteMovies}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [movies, setMovies] = useState([]);
     const [errorMovies, setErrorMovies] = useState('');
@@ -15,7 +14,6 @@ const Movies = () => {
     const searchFilms = () => {
         setIsLoading(true);
         moviesApi.getAllFilms().then(res => {
-            console.log(res);
             setMovies(res);
             setIsLoading(true);
         }).catch(err => {
@@ -32,7 +30,11 @@ const Movies = () => {
             <main className="movies">
                 <SearchForm searchFilms={searchFilms}/>
                 <MoviesCardList movies={movies}
+                                savedMovies={savedMovies}
+                                addMovies={addMovies}
+                                deleteMovies={deleteMovies}
                                 errorMovies={errorMovies}
+                                isSavedPage={false}
                                 isLoading={isLoading}/>
             </main>
             <Footer/>

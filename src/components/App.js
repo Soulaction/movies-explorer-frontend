@@ -16,6 +16,7 @@ import InfoMessage from "./InfoMessage/InfoMessage";
 
 function App() {
     const [authUser, setAuthUser] = useState({loggedIn: false});
+    const [savedMovies, setSavedMovies] = useState([]);
     const [infoObject, setInfoObject] = useState({});
     const [isOpen, setIsOpen] = useState(false);
 
@@ -30,8 +31,8 @@ function App() {
             }
         }).catch(err => {
             console.log(err.message);
-        })
-
+        });
+        getMovies();
     }, [authUser.loggedIn]);
 
     const handleLogin = (isLogin) => {
@@ -49,12 +50,36 @@ function App() {
                 textInfo: err.message
             })
         })
-
     }
 
     const handleUser = (newUser) => {
         setAuthUser((user) => {
             return {...user, name: newUser.name, email: newUser.email}
+        });
+    }
+
+    const getMovies = () => {
+        mainApi.getMovies().then(res => {
+            setSavedMovies(res.data);
+        }).catch(err => {
+            console.log(err.message);
+        });
+    }
+
+    const addMovies = (movie) => {
+        mainApi.createMovies(movie).then(newMovie => {
+            setSavedMovies(movies => [...movies, newMovie]);
+        }).catch(err => {
+            console.log(err.message);
+        });
+    }
+
+    const deleteMovies = (id) => {
+        const idSaved = savedMovies.find(el => el.movieId === id)._id;
+        mainApi.deleteMovies(idSaved).then(res => {
+            setSavedMovies(movies => movies.filter(el => el._id !== idSaved));
+        }).catch(err => {
+            console.log(err.message);
         });
     }
 
@@ -65,10 +90,15 @@ function App() {
                     <Route path="/" element={<Main/>}></Route>
                     <Route path="/movies" element={
                         <ProtectedRoute
+                            savedMovies={savedMovies}
+                            addMovies={addMovies}
+                            deleteMovies={deleteMovies}
                             element={Movies}/>}>
                     </Route>
                     <Route path="/saved-movies" element={
                         <ProtectedRoute
+                            savedMovies={savedMovies}
+                            deleteMovies={deleteMovies}
                             element={SavedMovies}/>}>
 
                     </Route>
@@ -78,8 +108,10 @@ function App() {
                             updateUser={updateUser}
                             element={ProfilePage}/>
                     }></Route>
-                    <Route path="/signin" element={authUser.loggedIn ? <Navigate to="/" /> :<Auth title="Рады видеть!" handleLogin={handleLogin} isLoginPage={true}/>}></Route>
-                    <Route path="/signup" element={authUser.loggedIn ? <Navigate to="/" /> :<Auth title="Добро пожаловать!"/>}></Route>
+                    <Route path="/signin" element={authUser.loggedIn ? <Navigate to="/"/> :
+                        <Auth title="Рады видеть!" handleLogin={handleLogin} isLoginPage={true}/>}></Route>
+                    <Route path="/signup"
+                           element={authUser.loggedIn ? <Navigate to="/"/> : <Auth title="Добро пожаловать!"/>}></Route>
                     <Route path="*" element={<NotFound/>}></Route>
                 </Routes>
             </div>

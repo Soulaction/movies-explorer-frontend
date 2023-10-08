@@ -8,6 +8,7 @@
     justify-content: center;
     margin: 70px 70px 10px;
     grid-template-columns: repeat(3, minmax(250px, 364px));
+    grid-auto-rows: 281px;
 }
 
 .movies-cards__block {
@@ -44,6 +45,7 @@
     .movies-cards__list {
         gap: 30px;
         grid-template-columns: repeat(2, minmax(250px, 339px));
+        grid-auto-rows: 262px;
     }
 }
 
@@ -61,6 +63,7 @@
     .movies-cards__list {
         gap: 14px;
         grid-template-columns: repeat(1, minmax(250px, 300px));
+        grid-auto-rows: 237px;
     }
 }
 

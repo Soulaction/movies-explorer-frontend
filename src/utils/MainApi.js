@@ -65,7 +65,7 @@ class MainApi {
     createMovies(movie) {
         return this._fetch('/movies', {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
             body: JSON.stringify(movie),

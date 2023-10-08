@@ -4,13 +4,16 @@ import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-const SavedMovies = () => {
+const SavedMovies = ({deleteMovies, savedMovies}) => {
     return (
         <>
             <Header/>
             <main className="save-movies">
                 <SearchForm/>
-                <MoviesCardList/>
+                <MoviesCardList movies={savedMovies}
+                                savedMovies={savedMovies}
+                                isSavedPage={true}
+                                deleteMovies={deleteMovies}/>
             </main>
             <Footer/>
         </>
