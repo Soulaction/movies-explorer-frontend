@@ -3,11 +3,9 @@ import {useContext, useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from "../../context/CurrentUserContext";
 import {mainApi} from "../../utils/MainApi";
-import InfoMessage from "../InfoMessage/InfoMessage";
 
 const Profile = ({handleLogin, updateUser}) => {
     const authUser = useContext(CurrentUserContext);
-    console.log('Profile', authUser);
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -47,6 +45,7 @@ const Profile = ({handleLogin, updateUser}) => {
 
     const logout = () => {
         mainApi.logout().then(res => {
+            localStorage.clear();
             handleLogin(false);
         }).catch(err => console.log(err))
     }

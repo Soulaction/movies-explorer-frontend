@@ -4,7 +4,6 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import Main from "./Main/Main";
 import SavedMovies from "./SavedMovies/SavedMovies";
 import Movies from "./Movies/Movies";
-import Profile from "./Profile/Profile";
 import Auth from "./Auth/Auth";
 import NotFound from "./NotFound/NotFound";
 import {CurrentUserContext} from "../context/CurrentUserContext";
@@ -13,10 +12,13 @@ import {mainApi} from "../utils/MainApi";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import ProfilePage from "./ProfilePage/ProfilePage";
 import InfoMessage from "./InfoMessage/InfoMessage";
+import {moviesApi} from "../utils/MoviesApi";
 
 function App() {
     const [authUser, setAuthUser] = useState({loggedIn: false});
     const [savedMovies, setSavedMovies] = useState([]);
+    const [movies, setMovies] = useState([]);
+    const [errorMovies, setErrorMovies] = useState('');
     const [infoObject, setInfoObject] = useState({});
     const [isOpen, setIsOpen] = useState(false);
 
@@ -32,7 +34,14 @@ function App() {
         }).catch(err => {
             console.log(err.message);
         });
-        getMovies();
+        moviesApi.getAllFilms().then(res => {
+            setMovies(res);
+        }).catch(err => {
+            console.log(err);
+            setErrorMovies('')
+        }).finally(() => {
+        });
+        getSavedMovies();
     }, [authUser.loggedIn]);
 
     const handleLogin = (isLogin) => {
@@ -58,7 +67,7 @@ function App() {
         });
     }
 
-    const getMovies = () => {
+    const getSavedMovies = () => {
         mainApi.getMovies().then(res => {
             setSavedMovies(res.data);
         }).catch(err => {
@@ -90,16 +99,20 @@ function App() {
                     <Route path="/" element={<Main/>}></Route>
                     <Route path="/movies" element={
                         <ProtectedRoute
+                            movies={movies}
+                            errorMovies={errorMovies}
                             savedMovies={savedMovies}
                             addMovies={addMovies}
                             deleteMovies={deleteMovies}
-                            element={Movies}/>}>
+                            element={Movies}
+                            isSavedPage={false}/>}>
                     </Route>
                     <Route path="/saved-movies" element={
                         <ProtectedRoute
                             savedMovies={savedMovies}
                             deleteMovies={deleteMovies}
-                            element={SavedMovies}/>}>
+                            element={SavedMovies}
+                            isSavedPage={true}/>}>
 
                     </Route>
                     <Route path="/profile" element={

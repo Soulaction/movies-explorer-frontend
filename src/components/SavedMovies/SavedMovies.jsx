@@ -3,16 +3,19 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
+import {useSearchFilms} from "../../hooks/useSearchFilms";
 
-const SavedMovies = ({deleteMovies, savedMovies}) => {
+const SavedMovies = ({deleteMovies, savedMovies, isSavedPage}) => {
+    const {filterMovies, isLoading, searchParams, handleFilterFilms} = useSearchFilms(savedMovies, isSavedPage)
     return (
         <>
             <Header/>
             <main className="save-movies">
-                <SearchForm/>
-                <MoviesCardList movies={savedMovies}
+                <SearchForm searchFilms={handleFilterFilms} searchParams={searchParams} isLoading={isLoading}/>
+                <MoviesCardList movies={filterMovies}
                                 savedMovies={savedMovies}
-                                isSavedPage={true}
+                                isSavedPage={isSavedPage}
+                                isLoading={isLoading}
                                 deleteMovies={deleteMovies}/>
             </main>
             <Footer/>

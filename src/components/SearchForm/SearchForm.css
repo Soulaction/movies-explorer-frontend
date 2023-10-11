@@ -65,6 +65,11 @@
     cursor: pointer;
 }
 
+.search__button:disabled {
+    opacity: .8;
+    cursor: default;
+}
+
 .search__button-icon {
     display: block;
 }

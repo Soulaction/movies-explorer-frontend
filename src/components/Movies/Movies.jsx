@@ -3,33 +3,16 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import {moviesApi} from "../../utils/MoviesApi";
-import {useState} from "react";
+import {useSearchFilms} from "../../hooks/useSearchFilms";
 
-const Movies = ({savedMovies, addMovies, deleteMovies}) => {
-    const [isLoading, setIsLoading] = useState(false)
-    const [movies, setMovies] = useState([]);
-    const [errorMovies, setErrorMovies] = useState('');
-
-    const searchFilms = () => {
-        setIsLoading(true);
-        moviesApi.getAllFilms().then(res => {
-            setMovies(res);
-            setIsLoading(true);
-        }).catch(err => {
-            console.log(err);
-            setErrorMovies('')
-        }).finally(() => {
-            setIsLoading(false);
-        });
-    }
-
+const Movies = ({movies, errorMovies, savedMovies, addMovies, deleteMovies, isSavedPage}) => {
+    const {filterMovies, isLoading, searchParams, handleFilterFilms} = useSearchFilms(movies, isSavedPage)
     return (
         <>
             <Header/>
             <main className="movies">
-                <SearchForm searchFilms={searchFilms}/>
-                <MoviesCardList movies={movies}
+                <SearchForm searchFilms={handleFilterFilms} searchParams={searchParams} isLoading={isLoading}/>
+                <MoviesCardList movies={filterMovies}
                                 savedMovies={savedMovies}
                                 addMovies={addMovies}
                                 deleteMovies={deleteMovies}

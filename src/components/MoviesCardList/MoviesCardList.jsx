@@ -27,7 +27,6 @@ const MoviesCardList = ({movies, savedMovies, isLoading, errorMovies, addMovies,
     }
 
     const checkSaved = (movie) => {
-        console.log(movie, savedMovies,);
         return !!savedMovies.find(el => el.movieId === movie.id);
     }
 
