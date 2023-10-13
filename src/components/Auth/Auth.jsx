@@ -38,7 +38,7 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
         evt.preventDefault();
         mainApi.login(values).then(res => {
             handleLogin(true);
-            navigate('/');
+            navigate('/movies');
         }).catch(err => {
             setInfoObject({
                 typeInfo: "error",

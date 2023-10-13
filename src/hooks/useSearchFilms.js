@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 
-export function useSearchFilms(movies, isSavedPage) {
+export function useSearchFilms(movies, isSavedPage, infoMovies) {
     const [filterMovies, setFilterMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isInfo, setIsInfo] = useState('');
     const [searchParams, setSearchParams] = useState({
         savedFilms: [],
         savedSort: false,
@@ -24,6 +25,10 @@ export function useSearchFilms(movies, isSavedPage) {
     }, [movies])
 
     const handleFilterFilms = (searchText, isShort) => {
+        if(infoMovies) {
+            setIsInfo(infoMovies);
+            return;
+        }
         setIsLoading(true);
         let findMovies = [];
         if (isShort) {
@@ -35,6 +40,13 @@ export function useSearchFilms(movies, isSavedPage) {
                 return movie.nameRU.toUpperCase().includes(searchText.toUpperCase()) || movie.nameEN.toUpperCase().includes(searchText.toUpperCase());
             });
         }
+
+        if(findMovies.length === 0) {
+            setIsInfo('Ничего не найдено')
+        } else {
+            setIsInfo('')
+        }
+
         setTimeout(() => {
             localStorage.setItem('searchParams', JSON.stringify({savedFilms: findMovies, savedSort: isShort, savedSearchString: searchText}));
             setIsLoading(false);
@@ -42,5 +54,5 @@ export function useSearchFilms(movies, isSavedPage) {
         }, 1000)
     }
 
-    return {filterMovies, isLoading, searchParams, handleFilterFilms};
+    return {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo};
 }

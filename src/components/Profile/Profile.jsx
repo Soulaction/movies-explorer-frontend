@@ -47,6 +47,7 @@ const Profile = ({handleLogin, updateUser}) => {
         mainApi.logout().then(res => {
             localStorage.clear();
             handleLogin(false);
+            navigate('/');
         }).catch(err => console.log(err))
     }
 

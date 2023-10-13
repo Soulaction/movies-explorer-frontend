@@ -53,11 +53,17 @@ function App() {
     const updateUser = (newUser) => {
         return mainApi.updateUser(newUser).then((res) => {
             handleUser(res.data);
+            setInfoObject({
+                typeInfo: "success",
+                textInfo: "Данные пользователя изменены"
+            });
+            setIsOpen(true);
         }).catch(err => {
             setInfoObject({
                 typeInfo: "error",
                 textInfo: err.message
-            })
+            });
+            setIsOpen(true);
         })
     }
 
@@ -113,7 +119,6 @@ function App() {
                             deleteMovies={deleteMovies}
                             element={SavedMovies}
                             isSavedPage={true}/>}>
-
                     </Route>
                     <Route path="/profile" element={
                         <ProtectedRoute
@@ -121,10 +126,14 @@ function App() {
                             updateUser={updateUser}
                             element={ProfilePage}/>
                     }></Route>
-                    <Route path="/signin" element={authUser.loggedIn ? <Navigate to="/"/> :
-                        <Auth title="Рады видеть!" handleLogin={handleLogin} isLoginPage={true}/>}></Route>
+                    <Route path="/signin"
+                           element={authUser.loggedIn ? <Navigate to="/movies"/>
+                               :
+                               <Auth title="Рады видеть!" handleLogin={handleLogin} isLoginPage={true}/>}></Route>
                     <Route path="/signup"
-                           element={authUser.loggedIn ? <Navigate to="/"/> : <Auth title="Добро пожаловать!"/>}></Route>
+                           element={authUser.loggedIn ? <Navigate to="/movies"/>
+                               :
+                               <Auth title="Добро пожаловать!"/>}></Route>
                     <Route path="*" element={<NotFound/>}></Route>
                 </Routes>
             </div>

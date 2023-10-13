@@ -6,7 +6,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import {useSearchFilms} from "../../hooks/useSearchFilms";
 
 const Movies = ({movies, errorMovies, savedMovies, addMovies, deleteMovies, isSavedPage}) => {
-    const {filterMovies, isLoading, searchParams, handleFilterFilms} = useSearchFilms(movies, isSavedPage)
+    const {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo} = useSearchFilms(movies, isSavedPage, errorMovies)
     return (
         <>
             <Header/>
@@ -16,7 +16,7 @@ const Movies = ({movies, errorMovies, savedMovies, addMovies, deleteMovies, isSa
                                 savedMovies={savedMovies}
                                 addMovies={addMovies}
                                 deleteMovies={deleteMovies}
-                                errorMovies={errorMovies}
+                                infoMovies={isInfo}
                                 isSavedPage={false}
                                 isLoading={isLoading}/>
             </main>
