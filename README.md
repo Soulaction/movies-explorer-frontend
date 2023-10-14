@@ -3,4 +3,6 @@
 
 ## Ссылки
 Ссылка на макет проекта: [dark-3](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=1-8436&mode=design&t=JjjweBdL69cB5h44-0)
-Ссылка на проект: http://film-movies.nomoredomainsrocks.ru/
+Ссылка на проект: https://film-movies.nomoredomainsrocks.ru/
+Ссылка на PM: https://github.com/Soulaction/movies-explorer-frontend/pull/2
+
