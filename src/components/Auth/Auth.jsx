@@ -13,7 +13,6 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
     const [infoObject, setInfoObject] = useState({});
     const [isOpen, setIsOpen] = useState(false);
     const form = useRef()
-    console.log(values);
 
     useEffect(() => {
         resetForm();
