@@ -89,4 +89,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi('https://api.film.nomoredomainsicu.ru')
+export const mainApi = new MainApi('https://film-movies.nomoredomainsicu.ru/api')
