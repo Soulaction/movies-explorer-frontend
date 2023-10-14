@@ -3,44 +3,33 @@ import {useContext, useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {CurrentUserContext} from "../../context/CurrentUserContext";
 import {mainApi} from "../../utils/MainApi";
+import {useFormWithValidation} from "../../hooks/useFormWithValidation";
 
 const Profile = ({handleLogin, updateUser}) => {
     const authUser = useContext(CurrentUserContext);
     const navigate = useNavigate();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const {values, errors, handleChange, isValid, resetForm} = useFormWithValidation(authUser);
     const [isChange, setIsChange] = useState(false);
-
-    useEffect(() => {
-        setName(authUser?.name);
-        setEmail(authUser?.email);
-    }, [authUser])
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         checkChange();
-    }, [name, email])
+    }, [values])
 
     const checkChange = () => {
-        if (authUser.name === name && authUser.email === email) {
+        if (authUser.name === values.name && authUser.email === values.email) {
             setIsChange(false);
         } else {
             setIsChange(true);
         }
     };
 
-    const handleChangeName = (name) => {
-        setName(name);
-    }
-
-    const handleChangeEmail = (email) => {
-        setEmail(email);
-    }
-
     const editProfile = (evt) => {
         evt.preventDefault();
-        updateUser({name, email}).then(() => {
+        setIsLoading(false);
+        updateUser({name: values.name, email: values.email}).then(() => {
             setIsChange(false);
-        })
+        }).finally(() => setIsLoading(false));
     }
 
     const logout = () => {
@@ -59,25 +48,32 @@ const Profile = ({handleLogin, updateUser}) => {
                     <div className="profile__input-block">
                         <label className="profile__label" htmlFor="input-name">Имя</label>
                         <input id="input-name"
-                               className="profile__input"
-                               value={name}
-                               onChange={evt => handleChangeName(evt.target.value)}
+                               className={`profile__input${errors.name ? ' profile__input_error' : ''}`}
+                               value={values.name}
+                               onChange={evt => handleChange(evt, 'name')}
+                               disabled={isLoading}
                                type="text"
                                name="name"
+                               pattern="[\sа-яА-Яa-zA-Z]+"
+                               required
                                placeholder="Введите имя"/>
                     </div>
+                    <span className="profile__text-error">{errors.name}</span>
                     <div className="profile__input-block">
                         <label className="profile__label" htmlFor="input-email">E-mail</label>
                         <input id="input-email"
-                               className="profile__input"
-                               value={email}
-                               onChange={evt => handleChangeEmail(evt.target.value)}
+                               className={`profile__input${errors.email ? ' profile__input_error' : ''}`}
+                               value={values.email}
+                               onChange={evt => handleChange(evt, 'email')}
+                               disabled={isLoading}
                                type="email"
                                name="email"
+                               required
                                placeholder="Введите email"/>
                     </div>
+                    <span className="profile__text-error">{errors.email}</span>
                     <button className="profile__btn profile__btn_edit"
-                            disabled={!isChange}
+                            disabled={!isChange || !isValid || isLoading}
                             type="submit"
                             onClick={evt => editProfile(evt)}>
                         Редактировать

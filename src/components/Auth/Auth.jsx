@@ -4,13 +4,21 @@ import logo from '../../images/logo.svg'
 import {useFormWithValidation} from "../../hooks/useFormWithValidation";
 import {mainApi} from "../../utils/MainApi";
 import InfoMessage from "../InfoMessage/InfoMessage";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Auth = ({title, handleLogin, isLoginPage}) => {
     const navigate = useNavigate();
-    const {values, errors, handleChange, isValid, resetForm} = useFormWithValidation();
+    const {values, errors, handleChange, isValid, resetForm} = useFormWithValidation({name: '', email: '', password: ''});
+    const [isLoading, setIsLoading] = useState(false);
     const [infoObject, setInfoObject] = useState({});
     const [isOpen, setIsOpen] = useState(false);
+    const form = useRef()
+    console.log(values);
+
+    useEffect(() => {
+        resetForm();
+        form.current.reset();
+    }, [isLoginPage]);
 
     const onClose = () => {
         setIsOpen(false)
@@ -18,6 +26,7 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
 
     const register = (evt) => {
         evt.preventDefault();
+        setIsLoading(true);
         mainApi.registration(values).then(res => {
             setInfoObject({
                 typeInfo: "success",
@@ -31,12 +40,13 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                 textInfo: err.message
             })
             setIsOpen(true);
-        })
+        }).finally(() => setIsLoading(false));
     }
 
     const auth = (evt) => {
         evt.preventDefault();
-        mainApi.login(values).then(res => {
+        setIsLoading(true);
+        mainApi.login({email: values.email, password: values.password}).then(res => {
             handleLogin(true);
             navigate('/movies');
         }).catch(err => {
@@ -45,13 +55,13 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                 textInfo: err.message
             })
             setIsOpen(true);
-        })
+        }).finally(() => setIsLoading(false));
     }
 
     return (<>
             <main className="auth">
                 <section className="auth-content">
-                    <form className="auth__form" name="auth-user" noValidate>
+                    <form className="auth__form" name="auth-user" noValidate ref={form}>
                         <NavLink className="auth__logo" to='/'>
                             <img className="auth__logo-img"
                                  src={logo}
@@ -60,20 +70,19 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                         <h1 className="auth__title">{title}</h1>
                         {!isLoginPage &&
                             <>
-                                <h1 className="auth__title">{title}</h1>
                                 <label className="auth__label"
                                        htmlFor="input-name">Имя</label>
                                 <input id="input-name"
                                        className={`auth__input ${errors.name ? 'auth__input_error' : ''}`}
                                        type="text"
                                        name="name"
-                                       onInput={handleChange}
+                                       onInput={(evt) => handleChange(evt, 'name')}
                                        value={values.name}
-                                       pattern="[\Wа-яА-Яa-zA-Z]+"
+                                       disabled={isLoading}
+                                       pattern="[\sа-яА-Яa-zA-Z]+"
                                        required
                                        placeholder="Введите имя"/>
-                                <span
-                                    className="auth__text-error">{errors.name}</span>
+                                <span className="auth__text-error">{errors.name}</span>
                             </>
                         }
                         <label className="auth__label" htmlFor="input-email">E-mail</label>
@@ -81,8 +90,9 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                                className={`auth__input ${errors.email ? 'auth__input_error' : ''}`}
                                type="email"
                                name="email"
-                               onInput={handleChange}
+                               onInput={(evt) => handleChange(evt, 'email')}
                                value={values.email}
+                               disabled={isLoading}
                                required
                                placeholder="Введите email"/>
                         <span className="auth__text-error">{errors.email}</span>
@@ -93,6 +103,7 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                                name="password"
                                onInput={handleChange}
                                value={values.password}
+                               disabled={isLoading}
                                required
                                placeholder="Введите пароль"/>
                         <span className="auth__text-error">{errors.password}</span>
@@ -100,7 +111,7 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                                 onClick={(evt) => {
                                     isLoginPage ? auth(evt) : register(evt)
                                 }}
-                                disabled={!isValid}
+                                disabled={!isValid || isLoading}
                                 type="submit">
                             {isLoginPage ? 'Войти' : 'Зарегестрироваться'}
                         </button>
