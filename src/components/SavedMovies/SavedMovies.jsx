@@ -6,7 +6,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import {useSearchFilms} from "../../hooks/useSearchFilms";
 
 const SavedMovies = ({deleteMovies, savedMovies, isSavedPage}) => {
-    const {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo} = useSearchFilms(savedMovies, isSavedPage, '')
+    const {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo} = useSearchFilms(savedMovies, isSavedPage, '');
     return (
         <>
             <Header/>

@@ -6,7 +6,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import {useSearchFilms} from "../../hooks/useSearchFilms";
 
 const Movies = ({movies, errorMovies, savedMovies, addMovies, deleteMovies, isSavedPage}) => {
-    const {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo} = useSearchFilms(movies, isSavedPage, errorMovies)
+    const {filterMovies, isLoading, searchParams, handleFilterFilms, isInfo} = useSearchFilms(movies, isSavedPage, errorMovies);
     return (
         <>
             <Header/>

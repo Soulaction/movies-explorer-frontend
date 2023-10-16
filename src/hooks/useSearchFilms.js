@@ -16,7 +16,7 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
             if(filterMovies.length === 0) {
                 setFilterMovies(movies);
             } else {
-                setFilterMovies(movies.filter(el => filterMovies.includes(el)));
+                setFilterMovies(movies.filter(mv => filterMovies.some(fmv => mv._id === fmv._id)));
             }
         } else {
             const savedSearchParams = JSON.parse(localStorage.getItem('searchParams'));
@@ -27,10 +27,10 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
                 setFilterMovies([]);
             }
         }
-    }, [movies])
+        console.log(filterMovies);
+    }, [movies, isSavedPage])
 
     const handleFilterFilms = (isShort, searchText) => {
-        console.log(infoMovies);
         if(infoMovies) {
             setIsInfo(infoMovies);
             return;
