@@ -34,8 +34,8 @@ const Profile = ({handleLogin, updateUser}) => {
 
     const logout = () => {
         mainApi.logout().then(res => {
-            localStorage.clear();
             handleLogin(false);
+            localStorage.clear();
             navigate('/');
         }).catch(err => console.log(err))
     }
@@ -68,6 +68,7 @@ const Profile = ({handleLogin, updateUser}) => {
                                disabled={isLoading}
                                type="email"
                                name="email"
+                               pattern="^\S+@\S+\.\S+$"
                                required
                                placeholder="Введите email"/>
                     </div>

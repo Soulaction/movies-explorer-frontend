@@ -3,25 +3,18 @@ import {NavLink, useNavigate} from "react-router-dom";
 import logo from '../../images/logo.svg'
 import {useFormWithValidation} from "../../hooks/useFormWithValidation";
 import {mainApi} from "../../utils/MainApi";
-import InfoMessage from "../InfoMessage/InfoMessage";
 import {useEffect, useRef, useState} from "react";
 
-const Auth = ({title, handleLogin, isLoginPage}) => {
+const Auth = ({title, handleLogin, setIsOpen, setInfoObject, isLoginPage}) => {
     const navigate = useNavigate();
     const {values, errors, handleChange, isValid, resetForm} = useFormWithValidation({name: '', email: '', password: ''});
     const [isLoading, setIsLoading] = useState(false);
-    const [infoObject, setInfoObject] = useState({});
-    const [isOpen, setIsOpen] = useState(false);
     const form = useRef()
 
     useEffect(() => {
         resetForm();
         form.current.reset();
     }, [isLoginPage]);
-
-    const onClose = () => {
-        setIsOpen(false)
-    }
 
     const register = (evt) => {
         evt.preventDefault();
@@ -31,8 +24,12 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                 typeInfo: "success",
                 textInfo: "Вы зарегистрированы"
             })
+            setIsOpen(true);
+            return mainApi.login({email: values.email, password: values.password});
+        }).then(res => {
+            handleLogin(true);
+            navigate('/movies');
             resetForm();
-            navigate('/signin');
         }).catch(err => {
             setInfoObject({
                 typeInfo: "error",
@@ -92,6 +89,7 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                                onInput={(evt) => handleChange(evt, 'email')}
                                value={values.email}
                                disabled={isLoading}
+                               pattern="^\S+@\S+\.\S+$"
                                required
                                placeholder="Введите email"/>
                         <span className="auth__text-error">{errors.email}</span>
@@ -122,7 +120,6 @@ const Auth = ({title, handleLogin, isLoginPage}) => {
                     </form>
                 </section>
             </main>
-            <InfoMessage isOpen={isOpen} onClose={onClose} {...infoObject}/>
         </>
     )
 }

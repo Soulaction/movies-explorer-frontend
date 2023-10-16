@@ -23,12 +23,13 @@ const SearchForm = ({searchFilms, searchParams, isLoading}) => {
             setErrorText('Нужно ввести ключевое слово');
         } else {
             setErrorText('');
-            searchFilms(searchText, isShort);
+            searchFilms(isShort, searchText);
         }
     }
 
     const handlerIsShorts = () => {
         setIsShort(oldType => !oldType)
+        searchFilms(!isShort);
     }
 
     return (

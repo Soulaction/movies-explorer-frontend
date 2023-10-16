@@ -4,6 +4,7 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
     const [filterMovies, setFilterMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isInfo, setIsInfo] = useState('');
+    const [searchRow, setSearchRow] = useState('');
     const [searchParams, setSearchParams] = useState({
         savedFilms: [],
         savedSort: false,
@@ -12,7 +13,11 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
 
     useEffect(() => {
         if(isSavedPage) {
-            setFilterMovies(movies);
+            if(filterMovies.length === 0) {
+                setFilterMovies(movies);
+            } else {
+                setFilterMovies(movies.filter(el => filterMovies.includes(el)));
+            }
         } else {
             const savedSearchParams = JSON.parse(localStorage.getItem('searchParams'));
             if(savedSearchParams) {
@@ -24,20 +29,29 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
         }
     }, [movies])
 
-    const handleFilterFilms = (searchText, isShort) => {
+    const handleFilterFilms = (isShort, searchText) => {
+        console.log(infoMovies);
         if(infoMovies) {
             setIsInfo(infoMovies);
             return;
+        }
+        let findText = '';
+        if(searchText) {
+            findText = searchText;
+            setSearchRow(searchText);
+        } else {
+            const savedSearchParams = JSON.parse(localStorage.getItem('searchParams'));
+            findText = searchRow ? searchRow : savedSearchParams.savedSearchString ? savedSearchParams.savedSearchString : '';
         }
         setIsLoading(true);
         let findMovies = [];
         if (isShort) {
             findMovies = movies.filter(movie => {
-                return ((movie.nameRU.toUpperCase().includes(searchText.toUpperCase()) || movie.nameEN.toUpperCase().includes(searchText.toUpperCase())) && movie.duration < 40);
+                return ((movie.nameRU.toUpperCase().includes(findText.toUpperCase()) || movie.nameEN.toUpperCase().includes(findText.toUpperCase())) && movie.duration < 40);
             });
         } else {
             findMovies = movies.filter(movie => {
-                return movie.nameRU.toUpperCase().includes(searchText.toUpperCase()) || movie.nameEN.toUpperCase().includes(searchText.toUpperCase());
+                return movie.nameRU.toUpperCase().includes(findText.toUpperCase()) || movie.nameEN.toUpperCase().includes(findText.toUpperCase());
             });
         }
 
@@ -48,7 +62,9 @@ export function useSearchFilms(movies, isSavedPage, infoMovies) {
         }
 
         setTimeout(() => {
-            localStorage.setItem('searchParams', JSON.stringify({savedFilms: findMovies, savedSort: isShort, savedSearchString: searchText}));
+            if (!isSavedPage) {
+                localStorage.setItem('searchParams', JSON.stringify({savedFilms: findMovies, savedSort: isShort, savedSearchString: findText}));
+            }
             setIsLoading(false);
             setFilterMovies(findMovies);
         }, 1000)

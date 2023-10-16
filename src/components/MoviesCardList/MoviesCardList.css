@@ -20,6 +20,8 @@
 .movies-cards__error-search {
     margin: 0;
     padding: 0;
+    text-align: center;
+    width: calc(100% - 70px * 2);
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
@@ -57,6 +59,12 @@
     .movies-cards__more-btn {
         margin: 50px 30px 80px;
     }
+
+    .movies-cards__error-search {
+        width: calc(100% - 30px * 2);
+        font-size: 17px;
+        line-height: 22px;
+    }
 }
 
 @media screen and (max-width: 590px) {
@@ -74,5 +82,13 @@
 
     .movies-cards__more-btn {
         margin: 50px 10px 80px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .movies-cards__error-search {
+        width: calc(100% - 14px * 2);
+        font-size: 14px;
+        line-height: 19px;
     }
 }

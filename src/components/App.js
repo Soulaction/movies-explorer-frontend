@@ -1,6 +1,6 @@
 import './App.css';
 import Header from '../components/Header/Header'
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import Main from "./Main/Main";
 import SavedMovies from "./SavedMovies/SavedMovies";
 import Movies from "./Movies/Movies";
@@ -15,7 +15,8 @@ import InfoMessage from "./InfoMessage/InfoMessage";
 import {moviesApi} from "../utils/MoviesApi";
 
 function App() {
-    const [authUser, setAuthUser] = useState({loggedIn: false});
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [authUser, setAuthUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
     const [movies, setMovies] = useState([]);
     const [errorMovies, setErrorMovies] = useState('');
@@ -38,16 +39,15 @@ function App() {
             setMovies(res);
         }).catch(err => {
             console.log(err);
-            setErrorMovies('')
+            setErrorMovies('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
         }).finally(() => {
         });
         getSavedMovies();
-    }, [authUser.loggedIn]);
+    }, [loggedIn]);
 
     const handleLogin = (isLogin) => {
-        setAuthUser((user) => {
-            return {...user, loggedIn: isLogin}
-        });
+        setLoggedIn(isLogin);
+        localStorage.setItem('loggedIn', isLogin);
     }
 
     const updateUser = (newUser) => {
@@ -68,9 +68,7 @@ function App() {
     }
 
     const handleUser = (newUser) => {
-        setAuthUser((user) => {
-            return {...user, name: newUser.name, email: newUser.email}
-        });
+        setAuthUser(newUser);
     }
 
     const getSavedMovies = () => {
@@ -127,13 +125,21 @@ function App() {
                             element={ProfilePage}/>
                     }></Route>
                     <Route path="/signin"
-                           element={authUser.loggedIn ? <Navigate to="/movies"/>
+                           element={loggedIn ? <Navigate to="/movies"/>
                                :
-                               <Auth title="Рады видеть!" handleLogin={handleLogin} isLoginPage={true}/>}></Route>
+                               <Auth title="Рады видеть!"
+                                     handleLogin={handleLogin}
+                                     setIsOpen={setIsOpen}
+                                     setInfoObject={setInfoObject}
+                                     isLoginPage={true}/>}></Route>
                     <Route path="/signup"
-                           element={authUser.loggedIn ? <Navigate to="/movies"/>
+                           element={loggedIn ? <Navigate to="/movies"/>
                                :
-                               <Auth title="Добро пожаловать!"/>}></Route>
+                               <Auth title="Добро пожаловать!"
+                                     handleLogin={handleLogin}
+                                     setIsOpen={setIsOpen}
+                                     setInfoObject={setInfoObject}
+                                     isLoginPage={false}/>}></Route>
                     <Route path="*" element={<NotFound/>}></Route>
                 </Routes>
             </div>
