@@ -26,13 +26,16 @@
 
 .not-found__link-back {
     display: block;
-    text-align: center;
-    padding-top: 184px;
+    padding: 0;
+    margin: 184px auto 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
     color: #4285F4;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

@@ -69,6 +69,12 @@
 
 .header__btn_signup {
     color: #fff;
+    cursor: pointer;
+    transition: opacity .3s linear;
+}
+
+.header__btn_signup:hover {
+    opacity: .7;
 }
 
 .header__btn_signup:first-of-type {
@@ -80,6 +86,12 @@
     padding: 8px 20px;
     background-color: #3DDC84;
     color: #000;
+    cursor: pointer;
+    transition: opacity .3s linear;
+}
+
+.header__btn_signin:hover {
+    opacity: .8;
 }
 
 .header__profile-link {
