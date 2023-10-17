@@ -89,4 +89,4 @@ class MainApi {
     }
 }
 
-export const mainApi = new MainApi('http://localhost:3001')
+export const mainApi = new MainApi('http://api.film.nomoredomainsicu.ru')
